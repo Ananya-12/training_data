@@ -1,0 +1,50 @@
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+folder='C:/Users/anany/Desktop/vision/data_set/input_data'
+folder2='C:/Users/anany/Desktop/vision/data_set/input_data_2'
+b5='C:/Users/anany/Desktop/vision/data_set/block_5'
+b6='C:/Users/anany/Desktop/vision/data_set/block_6'
+b7='C:/Users/anany/Desktop/vision/data_set/block_7'
+b21='C:/Users/anany/Desktop/vision/data_set/block_21'
+b22='C:/Users/anany/Desktop/vision/data_set/block_22'
+sp='C:/Users/anany/Desktop/vision/data_set/student_plaza'
+c5,c6,c7,c21,c22,csp=os.listdir(b5),os.listdir(b6),os.listdir(b7),os.listdir(b21),os.listdir(b22),os.listdir(sp)
+imlist=os.listdir(folder)
+p=0
+n=len(imlist)
+label=[]
+i=0
+for filename in os.listdir(b5):
+        c5[i] =folder + '/' + filename
+        i=i+1
+        label.append('block_5')
+i=0
+for filename in os.listdir(b6):
+        c6[i] =folder + '/' + filename
+        i=i+1
+        label.append('block_6')
+i=0
+for filename in os.listdir(b7):
+        c7[i] =folder + '/' + filename
+        i=i+1
+        label.append('block_7')
+i=0
+for filename in os.listdir(b21):
+        c21[i] =folder + '/' + filename
+        i=i+1
+        label.append('block_21')
+i=0
+for filename in os.listdir(b22):
+        c22[i] =folder + '/' + filename
+        i=i+1
+        label.append('block_22')
+i=0
+for filename in os.listdir(sp):
+        csp[i] =folder + '/' + filename
+        i=i+1
+        label.append('student_plaza')
+training_data=[]
+Data = c5+c6+c7+c21+c22+csp
+for x in range(n):
+    training_data.append([Data[x],label[x]])
