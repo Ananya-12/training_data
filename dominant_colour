@@ -1,0 +1,23 @@
+import cv2 
+import matplotlib.pyplot as plt
+import numpy as np
+
+a='/home/ananya/Documents/ananya/DSC-Data/pokemon/Charmander/00000181.jpg'
+img1=cv2.imread(a)
+img=cv2.cvtColor(img1,cv2.COLOR_BGR2RGB)
+img=cv2.resize(img,(100,100))
+z=img.reshape((-1,1))
+z=np.float32(z)
+criteria=(cv2.TERM_CRITERIA_EPS+cv2.TERM_CRITERIA_MAX_ITER,10,1.0)
+k=3
+ret,label1,center1=cv2.kmeans(z,k,None,criteria,10,cv2.KMEANS_RANDOM_CENTERS)
+center1=np.uint8(center1)
+res1=center1[label1.flatten()]
+img2=res1.reshape((img.shape))
+h,w=img2.shape[:2]
+img3=np.array(img2)
+b=np.unique(img3[0],axis=0)
+for i in range(1,h):
+    p=np.unique(img3[i],axis=0)
+    b=np.vstack((p,b))
+c=np.unique(b,axis=0)  #contains all the unique domintant colour
